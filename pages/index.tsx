@@ -1,11 +1,13 @@
+import { Box } from '@mui/material'
 import type { NextPage } from 'next'
+import Lista from '../src/components/Lista/Lista'
 
 
 const Home: NextPage = () => {
   return (
-    <>
-      <h2>Conteúdo do corpo da página principal</h2>
-    </>
+    <Box sx={{ backgroundColor: 'secondary.main' }}>
+      <Lista></Lista>
+    </Box>
   )
 }
 
