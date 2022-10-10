@@ -1,14 +1,16 @@
 import type { NextPage } from 'next'
 
-function Botao(){
-  return <a href='#'>Clique aqui</a>;
+function Botao(props){
+  return <a href='#'>{props.titulo}</a>;
 }
 
 const Home: NextPage = () => {
   return (
     <div>
-      HomePage
-      <Botao />
+      HomePage <br />
+      <Botao titulo='Click' /> <br />
+      <Botao titulo='Entrar' />
+      <Botao titulo='Ver mais' />
     </div>
   )
 }
