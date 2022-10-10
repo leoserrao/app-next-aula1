@@ -1,9 +1,12 @@
-import { NextPage } from "next";
+import type { NextPage } from 'next'
 
-const home: NextPage = () => {
-    return (
-        <div>Contato</div>
-    )
+
+const Contato: NextPage = () => {
+  return (
+    <>
+      <h2>Conteúdo do corpo da página contato</h2>
+    </>
+  )
 }
 
-export default home;
+export default Contato
