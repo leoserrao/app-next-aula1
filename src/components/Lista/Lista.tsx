@@ -1,46 +1,32 @@
 import { Button } from "@mui/material";
-import { Descricao, Foto, Informacoes, ItemLista, ListaStyled, Nome, Valor } from "./Lista.style";
+import { Professor } from "../../@types/professor";
+import { Descricao, Foto, Informacoes, ItemLista, ListaStyled, ListaVazia, Nome, Valor } from "./Lista.style";
 
-const Lista = () => {
+interface ListaProps {
+    professores: Professor[],
+}
+
+const Lista = (props: ListaProps) => {
     return (
-        <ListaStyled>
-            <ItemLista>
-                <Foto src="https://avatars.githubusercontent.com/u/34383554?v=4"></Foto>
-                <Informacoes>
-                    <Nome>Léo Serrão</Nome>
-                    <Valor>R$ 50,00 por hora</Valor>
-                    <Descricao>Aulas particulares de programação</Descricao>
-                    <Button sx={{width: '70%'}}>Marcar Aula com Léo</Button>
-                </Informacoes>
-            </ItemLista>
-            <ItemLista>
-                <Foto src="https://avatars.githubusercontent.com/u/34383554?v=4"></Foto>
-                <Informacoes>
-                    <Nome>Léo Barbosa</Nome>
-                    <Valor>R$ 40,00 por hora</Valor>
-                    <Descricao>Aulas particulares de design</Descricao>
-                    <Button sx={{width: '70%'}}>Marcar Aula com Léo</Button>
-                </Informacoes>
-            </ItemLista>
-            <ItemLista>
-                <Foto src="https://avatars.githubusercontent.com/u/34383554?v=4"></Foto>
-                <Informacoes>
-                    <Nome>Léo Serrão</Nome>
-                    <Valor>R$ 50,00 por hora</Valor>
-                    <Descricao>Aulas particulares de programação</Descricao>
-                    <Button sx={{width: '70%'}}>Marcar Aula com Léo</Button>
-                </Informacoes>
-            </ItemLista>
-            <ItemLista>
-                <Foto src="https://avatars.githubusercontent.com/u/34383554?v=4"></Foto>
-                <Informacoes>
-                    <Nome>Léo Barbosa</Nome>
-                    <Valor>R$ 40,00 por hora</Valor>
-                    <Descricao>Aulas particulares de design</Descricao>
-                    <Button sx={{width: '70%'}}>Marcar Aula com Léo</Button>
-                </Informacoes>
-            </ItemLista>
-        </ListaStyled>
+        <div>
+            {props.professores.length > 0 ? (
+            <ListaStyled>
+                {props.professores.map(professor => (
+                    <ItemLista key={professor.id}>
+                        <Foto src={professor.foto}></Foto>
+                        <Informacoes>
+                            <Nome>{professor.nome}</Nome>
+                            <Valor>{professor.valor_hora.toLocaleString('pt-BR', { minimumFractionDigits: 2, style: 'currency', currency: 'BRL' })} por hora</Valor>
+                            <Descricao>{professor.descricao}</Descricao>
+                            <Button sx={{width: '70%'}}>Marcar Aula com Léo</Button>
+                        </Informacoes>
+                    </ItemLista>
+                ))}            
+            </ListaStyled>
+            ) : (
+                <ListaVazia>Nenhum item encontrado</ListaVazia>
+            )}
+        </div>
     )
 }
 
